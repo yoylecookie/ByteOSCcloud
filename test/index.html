@@ -1,1 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Get My IP</title>
+</head>
+<body>
+  <p id="ip">Loading...</p>
+  <iframe src="https://yoylecookie.github.io/ByteOSCcloud/test/cloud.html"></iframe>
+
+  <script>
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => {
+          const str = data.ip;
+const asciiCodes = [];
+for (let i = 0; i < str.length; i++) {
+  asciiCodes.push(str.charCodeAt(i));
+}
+        document.getElementById('ip').textContent = asciiCodes;
+      })
+      .catch(err => {
+        document.getElementById('ip').textContent = 'Could not create test value';
+        console.error('Error creating test value:', err);
+      });
+  </script>
+</body>
+</html>
 
